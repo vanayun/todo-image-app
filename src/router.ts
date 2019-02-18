@@ -9,19 +9,23 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      redirect: '/todo',
+    },
+    {
+      path: '/todo',
       name: 'todo',
-      component: () => import('./App.vue'),
+      component: () => import('./views/TodoListView.vue'),
     },
     {
-      path: '/add',
-      name: 'todo-add',
-      component: () => import('./views/TodoAddPage.vue'),
-    },
-    {
-      path: '/detail',
+      path: '/todo/:id',
       name: 'todo-detail',
       props: true,
-      component: () => import('./views/TodoDetailPage.vue'),
+      component: () => import('./views/TodoDetailView.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/',
     },
   ],
 });

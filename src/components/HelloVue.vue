@@ -27,33 +27,41 @@ import { Component, Prop, Emit, Watch, Vue } from 'vue-property-decorator';
 export default class HelloVue extends Vue {
   /** props */
   @Prop()
-  val!: string;
+  private val!: string;
+
   /** data */
-  value: string = this.val;
-  inputValue: string = '';
+  private value: string = this.val;
+  private inputValue: string = '';
+
   /** emit */
   @Emit('handle-click')
-  clickButton(val: string): void {
+  private clickButton(val: string): void {
     //
+    alert(val);
   }
+
   /** watch */
   @Watch('value')
-  onValueChange(newValue: string, oldValue: string): void {
+  private onValueChange(newValue: string, oldValue: string): void {
     console.log(`watch: ${newValue}, ${oldValue}`);
   }
+
   /** computed */
   get isDisabled(): boolean {
     return this.inputValue === '';
   }
+
   /** lifecycle hook */
-  mounted(): void {
+  private mounted(): void {
     console.log('mounted');
   }
+
   /** methods */
-  handleInput($event: Event): void {
+  private handleInput($event: Event): void {
     this.inputValue = (($event.target as any) as HTMLInputElement).value;
   }
-  handleClick(): void {
+
+ private handleClick(): void {
     if (this.inputValue === '') {
       return;
     }

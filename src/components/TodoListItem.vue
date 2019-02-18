@@ -4,7 +4,7 @@
       <input
         type="checkbox"
         id="checkbox"
-        v-model="todo.completed"
+        v-model="todo.done"
         ref=true
       >
       <label for="checkbox">{{ checked }}</label>
@@ -31,7 +31,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class TodoListItem extends Vue {
   public handelClick() {
-    this.$props.todo.completed = !this.$props.completed;
+    this.$props.todo.done = !this.$props.done;
   }
 }
 </script>
